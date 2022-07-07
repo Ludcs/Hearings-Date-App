@@ -30,6 +30,7 @@ export const App = () => {
   const [dateArr, setDateArr] = useState([]);
   const [dateFrom, setDateFrom] = useState(initialStateFrom);
   const [dateTo, setDateTo] = useState(initialStateTo);
+  //const [dateDiference, setDateDiference] = useState();
   //const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -90,7 +91,7 @@ export const App = () => {
     }
   */
 
-  const dateFormate = (date, type) => {
+  /*   const dateFormate = (date, type) => {
     //Validar:
     if (type === 1) {
       //devolver tipo de fecha 1 para mandarle a la API
@@ -101,18 +102,18 @@ export const App = () => {
       setDateTo(date);
     }
     return null;
-  };
+  }; */
 
-  /* const handleDateFromChange = (date) => {
+  const handleDateFromChange = (date) => {
     //Chiqueriar acá!
     setDateFrom(date);
     //console.log(date);
   };
 
   const handleDateToChange = (date) => {
-    
+    setDateTo(date);
     //console.log(date, new Date());
-  }; */
+  };
 
   return (
     <>
@@ -132,8 +133,8 @@ export const App = () => {
             <label>Desde:</label>
             <StyledDatePicker
               selected={dateFrom}
-              //onChange={handleDateFromChange}
-              onChange={(date) => dateFormate(date, 1)}
+              onChange={handleDateFromChange}
+              //onChange={(date) => dateFormate(date, 1)}
               dateFormat="D [de] MMMM [de] yyyy"
               locale="es-AR"
               maxDate={initialStateTo}
@@ -144,8 +145,8 @@ export const App = () => {
             <label>Hasta:</label>
             <StyledDatePicker
               selected={dateTo}
-              //onChange={handleDateToChange}
-              onChange={(date) => dateFormate(date, 2)}
+              onChange={handleDateToChange}
+              //onChange={(date) => dateFormate(date, 2)}
               dateFormat="D [de] MMMM [de] yyyy"
               locale="es-AR"
               maxDate={initialStateTo}
