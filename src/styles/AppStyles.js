@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import DatePicker from 'react-datepicker';
 
 export const MainContainerApp = styled.div`
-  width: 100vw;
+  width: 80vw;
   margin: auto;
   min-width: 600px;
   max-width: 1200px;
@@ -13,8 +13,9 @@ export const MainContainerApp = styled.div`
   & h1 {
     width: 90%;
     margin: auto;
-    text-align: start;
-    color: rgb(36, 37, 34);
+    text-align: center;
+    text-transform: capitalize;
+    color: #303952;
     font-weight: bold;
     font-size: 27px;
     letter-spacing: -0.5px;
@@ -29,7 +30,7 @@ export const ContainerHearingsButtons = styled.div`
   justify-content: space-evenly;
   align-items: center;
   background-color: rgb(246, 247, 243);
-  border-radius: 50px;
+  border-radius: 5px;
 
   & button {
     width: 100%;
@@ -40,13 +41,17 @@ export const ContainerHearingsButtons = styled.div`
     font-weight: 900;
     font-size: 16px;
     letter-spacing: -0.5px;
-    color: rgb(184, 186, 177);
+    color: #303952;
+    border: 1px transparent;
+    border-radius: 5px;
 
     &:hover {
       cursor: pointer;
-      color: rgb(246, 247, 243);
-      background: rgb(138, 143, 21);
-      border-radius: 50px;
+      color: #e66767;
+      background: #f7d794;
+      border: 1px solid #e66767;
+      border-radius: 5px;
+      transition: all 0.2s ease-in-out;
     }
   }
 `;

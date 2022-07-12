@@ -119,7 +119,7 @@ export const App = () => {
     <>
       <GlobalStyle />
       <MainContainerApp>
-        <h1>Agenda de audiencias</h1>
+        <h1>Agenda de audiencias - Date Picker App </h1>
         <ContainerHearingsButtons>
           <button id="btn_prox">
             <p>PRÓXIMAS AUDIENCIAS</p>

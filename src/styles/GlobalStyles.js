@@ -8,8 +8,9 @@ export const GlobalStyle = createGlobalStyle`
   font-family: 'Encode Sans', sans-serif;
 }
 body {
-  width: 100vw;
+  width: 100%;
   margin: auto;
+  background: #63cdda;
 }
 h1 {
   font-family: 'Encode Sans', sans-serif;
