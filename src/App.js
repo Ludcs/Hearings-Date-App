@@ -1,12 +1,9 @@
 import {useEffect, useState} from 'react';
-//import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './App.css';
 import moment from 'moment';
 import 'moment/locale/es';
 import {HearingsDate} from './components/HearingsDate';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 import {GlobalStyle} from './styles/GlobalStyles';
 import {
   ContainerDatePickers,
@@ -30,8 +27,6 @@ export const App = () => {
   const [dateArr, setDateArr] = useState([]);
   const [dateFrom, setDateFrom] = useState(initialStateFrom);
   const [dateTo, setDateTo] = useState(initialStateTo);
-  //const [dateDiference, setDateDiference] = useState();
-  //const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getAudiences();
@@ -104,16 +99,9 @@ export const App = () => {
     return null;
   }; */
 
-  const handleDateFromChange = (date) => {
-    //Chiqueriar acá!
-    setDateFrom(date);
-    //console.log(date);
-  };
+  const handleDateFromChange = (date) => setDateFrom(date);
 
-  const handleDateToChange = (date) => {
-    setDateTo(date);
-    //console.log(date, new Date());
-  };
+  const handleDateToChange = (date) => setDateTo(date);
 
   return (
     <>
@@ -138,8 +126,8 @@ export const App = () => {
               dateFormat="D [de] MMMM [de] yyyy"
               locale="es-AR"
               maxDate={initialStateTo}
+              on
             />
-            <FontAwesomeIcon icon={faAngleDown} />
           </ContainerPickerFrom>
           <ContainerPickerTo>
             <label>Hasta:</label>
@@ -152,7 +140,6 @@ export const App = () => {
               maxDate={initialStateTo}
               minDate={dateFrom}
             />
-            <FontAwesomeIcon icon={faAngleDown} />
           </ContainerPickerTo>
         </ContainerDatePickers>
         <ContainerHearingsMap>

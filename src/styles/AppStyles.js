@@ -58,7 +58,6 @@ export const ContainerHearingsButtons = styled.div`
 
 export const ContainerDatePickers = styled.div`
   display: flex;
-  //border: 2px solid red;
   width: 90%;
   height: 70px;
   margin: auto;
@@ -69,6 +68,7 @@ export const ContainerDatePickers = styled.div`
 
   & label {
     margin-right: 5px;
+    margin-left: 15px;
     font-weight: 700;
     font-size: 14px;
   }
@@ -82,8 +82,9 @@ export const ContainerPickerFrom = styled.div`
   padding: 10px;
   border-radius: 8px;
   border: 1px solid rgb(184, 186, 177);
-  width: 100%;
+
   height: 100%;
+  background: rgb(246, 247, 243);
 `;
 export const ContainerPickerTo = styled.div`
   display: flex;
@@ -93,8 +94,8 @@ export const ContainerPickerTo = styled.div`
   padding: 10px;
   border-radius: 8px;
   border: 1px solid rgb(184, 186, 177);
-  width: 100%;
   height: 100%;
+  background: rgb(246, 247, 243);
 `;
 
 export const StyledDatePicker = styled(DatePicker)`
@@ -102,6 +103,9 @@ export const StyledDatePicker = styled(DatePicker)`
   border: none;
   font-family: 'Encode Sans', sans-serif;
   font-size: 14px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const ContainerHearingsMap = styled.div`

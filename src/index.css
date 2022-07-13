@@ -1,16 +1,14 @@
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Encode Sans', sans-serif;
-} */
+.react-datepicker {
+  background: #f7d794 !important;
+}
 
-/* body {
-  width: 100vw;
+.react-datepicker__day--selected {
+  background-color: #f8a5c2 !important;
+}
+
+.sc-ftvSup {
+  color: #303952;
+  text-align: center;
   margin: auto;
-  background: blue;
-} */
-
-/* .react-datepicker {
-  background: blue !important;
-} */
+  outline: none !important;
+}
