@@ -22,40 +22,6 @@ export const MainContainerApp = styled.div`
   }
 `;
 
-export const ContainerHearingsButtons = styled.div`
-  width: 90%;
-  height: 50px;
-  margin: auto;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: rgb(246, 247, 243);
-  border-radius: 5px;
-
-  & button {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: transparent;
-    font-family: 'Encode Sans', sans-serif;
-    font-weight: 900;
-    font-size: 16px;
-    letter-spacing: -0.5px;
-    color: #303952;
-    border: 1px transparent;
-    border-radius: 5px;
-
-    &:hover {
-      cursor: pointer;
-      color: #e66767;
-      background: #f7d794;
-      border: 1px solid #e66767;
-      border-radius: 5px;
-      transition: all 0.2s ease-in-out;
-    }
-  }
-`;
-
 export const ContainerDatePickers = styled.div`
   display: flex;
   width: 90%;
@@ -63,7 +29,7 @@ export const ContainerDatePickers = styled.div`
   margin: auto;
   padding-top: 25px;
   padding-bottom: 10px;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 
   & label {

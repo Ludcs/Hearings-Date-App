@@ -1,13 +1,11 @@
 import {useEffect, useState} from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
-import './App.css';
 import moment from 'moment';
 import 'moment/locale/es';
 import {HearingsDate} from './components/HearingsDate';
 import {GlobalStyle} from './styles/GlobalStyles';
 import {
   ContainerDatePickers,
-  ContainerHearingsButtons,
   ContainerHearingsMap,
   MainContainerApp,
   StyledDatePicker,
@@ -30,11 +28,12 @@ export const App = () => {
 
   useEffect(() => {
     getAudiences();
-    console.log(
-      new Date().getDate(),
-      new Date().getMonth(),
-      new Date().getDay()
-    );
+    if (dateFrom > dateTo) {
+      setDateTo(initialStateTo);
+    }
+    if (dateFrom === dateTo) {
+      setDateTo(dateFrom);
+    }
   }, [dateFrom, dateTo]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getAudiences = async () => {
@@ -54,7 +53,6 @@ export const App = () => {
     const result = audience.reduce((acum, item) => {
       let {fecha, ...rest} = item;
       let exist = acum.find((x) => x.fecha === fecha);
-      //console.log(exist);
       if (!exist) {
         exist = {fecha, hearings: []};
         acum.push(exist);
@@ -67,8 +65,7 @@ export const App = () => {
     console.log('Resultado', result);
   };
 
-  /* 
-    const arrayDateMaker = (arrayDates) => {
+  /* const arrayDateMaker = (arrayDates) => {
         const arrayOfDate = arrayDates.map((item) => {
             return item.proxima_audiencia
         })
@@ -83,8 +80,7 @@ export const App = () => {
                 }),
             }
         })
-    }
-  */
+    } */
 
   /*   const dateFormate = (date, type) => {
     //Validar:
@@ -99,23 +95,22 @@ export const App = () => {
     return null;
   }; */
 
-  const handleDateFromChange = (date) => setDateFrom(date);
+  const handleDateFromChange = (date) => {
+    console.log(date);
+    setDateFrom(date);
+  };
 
-  const handleDateToChange = (date) => setDateTo(date);
+  const handleDateToChange = (date) => {
+    console.log(date);
+    setDateTo(date);
+  };
 
   return (
     <>
       <GlobalStyle />
       <MainContainerApp>
         <h1>Agenda de audiencias - Date Picker App </h1>
-        <ContainerHearingsButtons>
-          <button id="btn_prox">
-            <p>PRÓXIMAS AUDIENCIAS</p>
-          </button>
-          <button id="btn_pas">
-            <p>AUDIENCIAS PASADAS</p>
-          </button>
-        </ContainerHearingsButtons>
+
         <ContainerDatePickers>
           <ContainerPickerFrom>
             <label>Desde:</label>
@@ -126,7 +121,6 @@ export const App = () => {
               dateFormat="D [de] MMMM [de] yyyy"
               locale="es-AR"
               maxDate={initialStateTo}
-              on
             />
           </ContainerPickerFrom>
           <ContainerPickerTo>
@@ -148,7 +142,7 @@ export const App = () => {
               key={index}
               item={item}
               index={index}
-              lengthData={dateArr.length}
+              lengthHearings={dateArr[index].hearings.length}
             />
           ))}
         </ContainerHearingsMap>

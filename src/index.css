@@ -1,5 +1,6 @@
 .react-datepicker {
   background: #f7d794 !important;
+  font-family: 'Chakra Petch', sans-serif;
 }
 
 .react-datepicker__day--selected {
@@ -8,7 +9,7 @@
 
 .sc-ftvSup {
   color: #303952;
+  font-family: 'Chakra Petch', sans-serif;
   text-align: center;
-  margin: auto;
   outline: none !important;
 }

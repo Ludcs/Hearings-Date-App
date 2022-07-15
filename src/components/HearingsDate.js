@@ -4,10 +4,11 @@ import {
   ContainerOnlyDate,
   ContainerRest,
 } from '../styles/HearingsDateStyles';
+import {OnlyHearings} from './OnlyHearings';
 
 moment.locale('es');
 
-export const HearingsDate = ({item, index, lengthData}) => {
+export const HearingsDate = ({item, lengthHearings}) => {
   return (
     <ContainerHearingsDate>
       <ContainerOnlyDate>
@@ -15,17 +16,14 @@ export const HearingsDate = ({item, index, lengthData}) => {
         <p>{item.fecha.slice(2, 7)}</p>
       </ContainerOnlyDate>
       <ContainerRest>
-        {item.hearings.map((el) => (
-          <div key={el.id}>
-            <p>
-              <span>{el.fecha2} •</span> {el.hora.slice(0, 5)} hs
-            </p>
-            <p id="text_name">{el.nombre}</p>
-          </div>
+        {item.hearings.map((el, index) => (
+          <OnlyHearings
+            key={el.id}
+            el={el}
+            index={index}
+            lengthHearings={lengthHearings}
+          />
         ))}
-
-        {/* <p>{item.hearings.map((hour) => hour.hora.slice(0, 5))}</p>
-        <p>{item.hearings.map((name) => name.nombre)}</p> */}
       </ContainerRest>
     </ContainerHearingsDate>
   );

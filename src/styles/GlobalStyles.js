@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Encode Sans', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
 }
 body {
   width: 100%;
@@ -13,8 +13,7 @@ body {
   background: #63cdda;
 }
 h1 {
-  font-family: 'Encode Sans', sans-serif;
-  letter-spacing: 1.5px;
-  padding-bottom: 20px;	 
+  font-family: 'Chakra Petch', sans-serif;
+  letter-spacing: 1.5px;  
 }
 `;
