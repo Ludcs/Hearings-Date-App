@@ -1,4 +1,5 @@
-HEARINGS DATE APP! Vista para desktop.
+¡Agenda APP!
+Vista para desktop.
 
 °Recursos: create-react-app + styled-components + React Date Picker + moment.js + API
 
