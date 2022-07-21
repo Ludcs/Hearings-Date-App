@@ -10,6 +10,13 @@ export const MainContainerApp = styled.div`
   padding: 30px;
   text-align: center;
 
+  & img {
+    width: 90%;
+    object-fit: contain;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 5px 0px;
+    margin-bottom: 30px;
+  }
+
   & h1 {
     width: 90%;
     margin: auto;

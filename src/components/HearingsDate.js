@@ -13,7 +13,7 @@ export const HearingsDate = ({item, lengthHearings}) => {
     <ContainerHearingsDate>
       <ContainerOnlyDate>
         <h2>{item.fecha.slice(0, 2)}</h2>
-        <p>{item.fecha.slice(2, 7)}</p>
+        <p>{item.fecha1}</p>
       </ContainerOnlyDate>
       <ContainerRest>
         {item.hearings.map((el, index) => (

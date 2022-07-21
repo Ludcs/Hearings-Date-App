@@ -1,17 +1,16 @@
 import styled from 'styled-components';
 
 export const OnlyHearings = ({el, index, lengthHearings}) => {
-  console.log('lenghtHearings', lengthHearings);
-  console.log('index', index);
-
   return (
     <ContainerHearing lengthHearings={lengthHearings} index={index}>
       <p>
-        <span>{el.fecha2} •</span> {el.hora.slice(0, 5)} hs
+        <span>{el.fecha2}</span>
       </p>
+      <p>Horario: {el.hora.slice(0, 5)} hs</p>
       <p id="text_name">{el.nombre}</p>
-      <p>
-        {lengthHearings} - {index}
+      <p id="text_name">
+        {' '}
+        <span>Sede:</span> {el.sede}
       </p>
     </ContainerHearing>
   );
@@ -28,7 +27,7 @@ const ContainerHearing = styled.div`
       : '1px solid rgb(223, 224, 218)'};
   background-color: #f8a5c2;
   padding: 10px 10px;
-  width: 112%;
+  width: 112.5%;
 
   & #text_name {
     font-size: 18px;

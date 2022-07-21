@@ -2,17 +2,14 @@ import styled from 'styled-components';
 
 export const ContainerHearingsDate = styled.div`
   display: flex;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
   margin-bottom: 20px;
   height: auto;
   outline: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 `;
 
 export const ContainerOnlyDate = styled.div`
   background-color: #f7d794;
-  border-bottom-left-radius: 12px;
-  border-top-left-radius: 12px;
   width: 10%;
   display: flex;
   flex-direction: column;
@@ -38,7 +35,4 @@ export const ContainerRest = styled.div`
   width: 80%;
   display: flex;
   flex-direction: column;
-
-  & div {
-  }
 `;

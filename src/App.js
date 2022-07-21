@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 import 'moment/locale/es';
+import AgendaImg from '../src/agenda.jpg';
 import {HearingsDate} from './components/HearingsDate';
 import {GlobalStyle} from './styles/GlobalStyles';
 import {
@@ -34,7 +35,7 @@ export const App = () => {
     if (dateFrom === dateTo) {
       setDateTo(dateFrom);
     }
-  }, [dateFrom, dateTo]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [dateFrom, dateTo]);
 
   const getAudiences = async () => {
     const url = `http://api.juiciosdelesahumanidad.ar/api/v1.0/historico/agenda/fecha/${dateFrom}/${dateTo}`;
@@ -43,18 +44,20 @@ export const App = () => {
     const {resultado} = await resp.json();
 
     const audience = resultado.agenda.map((aud) => ({
-      fecha: moment(aud.proxima_audiencia).format('D ddd MM/YY').toUpperCase(),
+      fecha: moment(aud.proxima_audiencia).format('D dddd MM/YY').toUpperCase(),
+      fecha1: moment(aud.proxima_audiencia).format('dddd').toUpperCase(),
       fecha2: moment(aud.proxima_audiencia).format('DD/MM/YY'),
       id: aud.id,
       hora: aud.hora,
       nombre: aud.caus_nombre_vulgar,
+      sede: aud.sede,
     }));
 
     const result = audience.reduce((acum, item) => {
-      let {fecha, ...rest} = item;
+      let {fecha, fecha1, ...rest} = item;
       let exist = acum.find((x) => x.fecha === fecha);
       if (!exist) {
-        exist = {fecha, hearings: []};
+        exist = {fecha, fecha1, hearings: []};
         acum.push(exist);
       }
       exist.hearings.push(rest);
@@ -62,46 +65,13 @@ export const App = () => {
     }, []);
 
     setDateArr(result);
-    console.log('Resultado', result);
   };
 
-  /* const arrayDateMaker = (arrayDates) => {
-        const arrayOfDate = arrayDates.map((item) => {
-            return item.proxima_audiencia
-        })
-        const arr = arrayOfDate.filter(function (item, index, inputArray) {
-            return inputArray.indexOf(item) == index
-        })
-      return arr.map((item) => {
-            return {
-                date: item,
-                hearings: arrayDates.filter((subItem) => {
-                    return subItem.proxima_audiencia === item
-                }),
-            }
-        })
-    } */
-
-  /*   const dateFormate = (date, type) => {
-    //Validar:
-    if (type === 1) {
-      //devolver tipo de fecha 1 para mandarle a la API
-      setDateFrom(date);
-    }
-    if (type === 2) {
-      //devolver tipo de fecha 2 para mostrar en el front
-      setDateTo(date);
-    }
-    return null;
-  }; */
-
   const handleDateFromChange = (date) => {
-    console.log(date);
     setDateFrom(date);
   };
 
   const handleDateToChange = (date) => {
-    console.log(date);
     setDateTo(date);
   };
 
@@ -109,15 +79,16 @@ export const App = () => {
     <>
       <GlobalStyle />
       <MainContainerApp>
-        <h1>Agenda de audiencias - Date Picker App </h1>
-
+        <img src={AgendaImg} alt="Agenda img" />
+        <h1>
+          - DATE PICKER APP - <br /> ¡Una agenda para buscar fechas del pasado!
+        </h1>
         <ContainerDatePickers>
           <ContainerPickerFrom>
             <label>Desde:</label>
             <StyledDatePicker
               selected={dateFrom}
               onChange={handleDateFromChange}
-              //onChange={(date) => dateFormate(date, 1)}
               dateFormat="D [de] MMMM [de] yyyy"
               locale="es-AR"
               maxDate={initialStateTo}
@@ -128,7 +99,6 @@ export const App = () => {
             <StyledDatePicker
               selected={dateTo}
               onChange={handleDateToChange}
-              //onChange={(date) => dateFormate(date, 2)}
               dateFormat="D [de] MMMM [de] yyyy"
               locale="es-AR"
               maxDate={initialStateTo}
