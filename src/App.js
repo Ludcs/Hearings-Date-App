@@ -38,9 +38,9 @@ export const App = () => {
   }, [dateFrom, dateTo]);
 
   const getAudiences = async () => {
-    const resp = await fetch(
-      `http://api.juiciosdelesahumanidad.ar/api/v1.0/historico/agenda/fecha/${dateFrom}/${dateTo}`
-    );
+    const url = `http://api.juiciosdelesahumanidad.ar/api/v1.0/historico/agenda/fecha/${dateFrom}/${dateTo}`;
+
+    const resp = await fetch(url);
     const {resultado} = await resp.json();
 
     const audience = resultado.agenda.map((aud) => ({
